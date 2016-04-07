@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 var Recipient = require('./recipient');
 
 var MessageSchema = new Schema ({
-  time: String,
-  text: String,
+  dateSent: String,
+  bodyText: String,
   from: String,
-  recipients: {type: Schema.Types.ObjectId, ref: 'To'},
+  recipients: {type: Schema.Types.ObjectId, ref: 'Recipient'},
 });
 
 var Message = mongoose.model('Message', MessageSchema);

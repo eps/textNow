@@ -15,12 +15,28 @@ app.use(bodyParser.urlencoded({ extended: true }));
  **********/
 
 
+/*
+* HTML ENDPOINTS
+*/
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/message', function inbox (req, res) {
+  res.sendFile(__dirname + '/views/message.html');
+});
+//
+// app.get('/api/messages', function (req, res) {
+//   res.json({message: "Hello, World!"});
+// });
 
+/*
+ * JSON API Endpoints
+ */
+var controllers = require('./controllers');
 
+app.get('/api', controllers.api.index);
+app.get('/api/messages', controllers.message.index);
 
 
 app.listen(process.env.PORT || 3000, function () {

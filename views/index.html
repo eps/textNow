@@ -4,183 +4,76 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Text</title>
+    <title>MyText</title>
 
     <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
-    <script src="vendor/jQuery/dist/jquery.min.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="vendor/handlebars/handlebars.min.js"></script>
+    <script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
   </head>
+
   <body>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
     <div class="jumbotron">
       <div class="container">
-        <h1>Welcome to tunely</h1>
-        <p>Your music binder!</p>
+        <h1>textEm</h1>
+        <p>Hello!</p>
       </div>
     </div>
     <!-- BEGIN FORM SAMPLE -->
 
         <section id='album-form' class="container">
           <div class="row">
-          <div class="col-md-10 col-md-offset-1">
+          <!-- <div class="col-md-10 col-md-offset-1"> -->
 
             <form class="form-horizontal">
               <fieldset>
 
                 <!-- Form Name -->
-                <legend>Add New Album</legend>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="name">Album Name</label>
-                  <div class="col-md-4">
-                  <input type="text" name="name" placeholder="Enter Album Name" id="name" class="form-control input-md" required="">
-
-                  </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="artistName">Artist Name</label>
-                  <div class="col-md-4">
-                  <input type="text" id="textinput" name="artistName" placeholder="Enter Artist Name" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="releaseDate">Release Date</label>
-                  <div class="col-md-4">
-                  <input type="text"  id="releaseDate" name="releaseDate" placeholder="1992" class="form-control input-md">
-
-                  </div>
-                </div>
+                <legend>Welcome!</legend>
 
                 <!-- Textarea -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="genres">Genres (separated by commas)</label>
-                  <div class="col-md-4">
-                    <textarea class="form-control" id="genres" name="genres">rock, pop</textarea>
-                  </div>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="http://localhost:3000/messages/">Text Message (SMS)</a></li>
+                      <li><a href="#">Voice Call</a></li>
+                    </ul>
                 </div>
-
-
-                <!-- Button -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="singlebutton">Save Album</label>
-                  <div class="col-md-4">
-                    <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
-                  </div>
-                </div>
-              </fieldset>
             </form>
-          </div>
-          </div>
-        </section>
-
-    <section class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <h2>Albums</h2>
-        </div>
-      </div>
-      <!-- albums! -->
-
-          <!-- one album -->
-          <div class="row album">
-
-            <div class="col-md-10 col-md-offset-1">
-              <div class="panel panel-default">
-                <div class="panel-body">
-
-
-                <!-- begin album internal row -->
-                <div id='albums'>
-                  <script id="albums-template" type="text/x-handlebars-template">
-                  <div class='row'>
-                    <div class="col-md-3 col-xs-12 thumbnail album-art">
-                      <img src="images/800x800.png" alt="album image">
-                    </div>
-
-                    <div class="col-md-9 col-xs-12">
-                      <ul class="list-group">
-                        <li class="list-group-item">
-                          <h4 class='inline-header'>Album Name:</h4>
-                          <span class='album-name'>{{name}}</span>
-                        </li>
-
-                        <li class="list-group-item">
-                          <h4 class='inline-header'>Artist Name:</h4>
-                          <span class='artist-name'>{{artistName}}</span>
-                        </li>
-
-                        <li class="list-group-item">
-                          <h4 class='inline-header'>Released date:</h4>
-                          <span class='album-releaseDate'>{{releaseDate}}</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                  </div>
-                  <!-- end of album internal row -->
-
-                  <div class='panel-footer'>
-                  </div>
-
-                </div>
+            <div class="row">
+              <div class="information col-md-6">
+                <p>Qui id quod purto nonumy, in vim enim laudem luptatum, at mel regione oblique vituperata. Qui suscipit sadipscing ad. An novum aliquip consectetuer per, nonumy impetus admodum in qui, alia stet ad has. Cu decore malorum sea, natum ignota eam eu, cu eam porro inermis. Nibh dicam cetero mea ut. Pri ea oratio deserunt, sed ea option omnesque adipiscing, singulis delicata facilisis in ius. Falli cetero cu pro, ne soleat eleifend has, in eum lorem nonumy.
+                </p>
+              </div>
+              <div class="information col-md-6">
+                <p>Vix id dicat audire periculis, te eos dolorem facilisis. Ea sea tale tation, putent essent splendide te nec. Summo debitis ex vix, no vocibus platonem efficiantur nam, quot nobis electram at duo. Quot commodo his te. Usu habeo numquam interpretaris ei, an denique gloriatur per.
+                </p>
               </div>
             </div>
-          </script>
-          </div>
-          <!-- end one album -->
+            <div class="row">
+              <div class="information col-md-6">
+                <p>Qui id quod purto nonumy, in vim enim laudem luptatum, at mel regione oblique vituperata. Qui suscipit sadipscing ad. An novum aliquip consectetuer per, nonumy impetus admodum in qui, alia stet ad has. Cu decore malorum sea, natum ignota eam eu, cu eam porro inermis. Nibh dicam cetero mea ut. Pri ea oratio deserunt, sed ea option omnesque adipiscing, singulis delicata facilisis in ius. Falli cetero cu pro, ne soleat eleifend has, in eum lorem nonumy.
+                </p>
+              </div>
+              <div class="information col-md-6">
+                <p>Vix id dicat audire periculis, te eos dolorem facilisis. Ea sea tale tation, putent essent splendide te nec. Summo debitis ex vix, no vocibus platonem efficiantur nam, quot nobis electram at duo. Quot commodo his te. Usu habeo numquam interpretaris ei, an denique gloriatur per.
+                </p>
+              </div>
+            </div>
       </div>
     </section>
-
-    <!-- begin songModal: this is not visible until you call .modal() on it -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Create Song</h4>
-          </div>
-          <div class="modal-body">
-
-            <fieldset class='form-horizontal'>
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="songName">Song Name</label>
-                <div class="col-md-4">
-                  <input id="songName" name="songName" type="text" placeholder="" class="form-control input-md" required="">
-                </div>
-              </div>
-
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="trackNumber">Track Number</label>
-                <div class="col-md-4">
-                  <input id="trackNumber" name="trackNumber" type="text" placeholder="" class="form-control input-md">
-                </div>
-              </div>
-            </fieldset>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="saveSong">Save changes</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
   </body>
 </html>
