@@ -16,9 +16,9 @@ $(document).ready(function() {
     error: inboxError
   });
 
-  $('#singlebutton').on('submit', function(e) {
+  $('#inbox-form').on('submit', function(e) {
     e.preventDefault();
-    var newData = $(this).seralize();
+    var newData = $(this).serialize();
     console.log('button worked', newData);
   });
 
