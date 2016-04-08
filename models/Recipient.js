@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var RecipientSchema = new Schema ({
   name: String,
-  number: Number
+  number: String,
 });
 
 var Recipient = mongoose.model('Recipient', RecipientSchema);

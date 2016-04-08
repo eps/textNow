@@ -22,8 +22,9 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/message', function inbox (req, res) {
-  res.sendFile(__dirname + '/views/message.html');
+// REQUEST TO SECOND PAGE /MESSAGE
+app.get('/messages', function inbox (req, res) {
+  res.sendFile(__dirname + '/views/messages.html');
 });
 //
 // app.get('/api/messages', function (req, res) {
@@ -37,7 +38,7 @@ var controllers = require('./controllers');
 
 app.get('/api', controllers.api.index);
 app.get('/api/messages', controllers.message.index);
-
+// app.post('/api/messages', controllers.messages.create);
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is running on http://localhost:3000/');
