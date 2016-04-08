@@ -22,12 +22,12 @@
   <body>
     <ul class="nav nav-tabs">
       <li role="presentation"><a href="http://localhost:3000">Home</a></li>
-      <li role="presentation"><a href="#">Profile</a></li>
-      <li role="presentation"><a href="http://localhost:3000/messages">Messages</a></li>
+      <li role="presentation"><a href="http://localhost:3000/inbox">Inbox</a></li>
+      <li role="presentation"><a href="http://localhost:3000/messages">Create a New Message</a></li>
     </ul>
     <div class="jumbotron">
       <div class="container">
-        <h1>MyMessages</h1>
+        <h1>Send a message</h1>
         <p>Hello!</p>
       </div>
     </div>
@@ -57,6 +57,44 @@
           </div>
         </div>
       </form>
+      <!-- <div id='message'>
+
+        <script id="message-template" type="text/x-handlebars-template">
+          {{#each Message}}
+          <p>
+            <b>Text sent by {{from}} to {{recipients.number}}</b>
+          </p>
+          <p>{{bodyText}}</p>
+          {{/each}}
+        </script>
+      </div> -->
+
+      <div id='message'>
+        <script id="message-template" type="text/x-handlebars-template">
+          {{#each messages}}
+        <div class='row'>
+          <div class="col-md-9 col-xs-12">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <h4 class='inline-header'>From:</h4>
+                <span class='album-name'>{{from}}</span>
+              </li>
+
+              <li class="list-group-item">
+                <h4 class='inline-header'>To:</h4>
+                <span class='artist-name'>{{[recipients.name]}}</span>
+              </li>
+
+              <li class="list-group-item">
+                <h4 class='inline-header'>Text:</h4>
+                <span class='album-releaseDate'>{{bodyText}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {{/each}}
+      </script>
+</div>
     </section>
   </body>
 </html>

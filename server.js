@@ -26,6 +26,10 @@ app.get('/', function homepage (req, res) {
 app.get('/messages', function inbox (req, res) {
   res.sendFile(__dirname + '/views/messages.html');
 });
+
+app.get('/inbox', function inbox (req, res) {
+  res.sendFile(__dirname + '/views/inbox.html');
+});
 //
 // app.get('/api/messages', function (req, res) {
 //   res.json({message: "Hello, World!"});
