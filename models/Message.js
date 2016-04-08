@@ -6,7 +6,7 @@ var MessageSchema = new Schema ({
   dateSent: String,
   bodyText: String,
   from: String,
-  recipients: [{type: Schema.Types.ObjectId, ref: 'Recipient'}],
+  recipients: [Recipient.schema],
 });
 
 var Message = mongoose.model('Message', MessageSchema);

@@ -18,8 +18,15 @@ $(document).ready(function() {
 
   $('#inbox-form').on('submit', function(e) {
     e.preventDefault();
-    var newData = $(this).serialize();
+    var newData = $(this).serializeArray();
     console.log('button worked', newData);
+      $.ajax({
+        method: 'POST',
+        url: '/api/messages',
+        data: newData,
+        success: postSuccess,
+        error: postError,
+      });
   });
 
 });
@@ -37,4 +44,12 @@ function messageSuccess(json) {
 
 function errorSuccess(err) {
   console.log('Message Error: ', err);
+}
+
+function postSuccess(json) {
+  console.log('post messages success', json);
+}
+
+function postError(err) {
+  console.log('POST Error: ', err);
 }

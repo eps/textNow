@@ -38,7 +38,7 @@ var controllers = require('./controllers');
 
 app.get('/api', controllers.api.index);
 app.get('/api/messages', controllers.message.index);
-// app.post('/api/messages', controllers.messages.create);
+app.post('/api/messages', controllers.message.create);
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is running on http://localhost:3000/');
