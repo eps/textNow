@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="scripts/app.js"></script>
+    <script src="scripts/inboxapp.js"></script>
   </head>
 
   <body>
@@ -25,51 +25,39 @@
       <li role="presentation"><a href="http://localhost:3000/inbox">Inbox</a></li>
       <li role="presentation"><a href="http://localhost:3000/messages">Create a New Message</a></li>
     </ul>
-    <div class="jumbotron">
-      <div class="container">
-        <h1>textEm</h1>
-        <p>Hello!</p>
-      </div>
-    </div>
     <!-- BEGIN FORM SAMPLE -->
 
     <section id='message-form' class="container">
       <div class="row">
-          <!-- <div class="col-md-10 col-md-offset-1"> -->
-
           <form class="form-horizontal">
                 <!-- Form Name -->
             <legend>Welcome!</legend>
               <!-- Textarea -->
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="http://localhost:3000/messages/">Text Message (SMS)</a></li>
-                    <li><a href="#">Voice Call</a></li>
-                  </ul>
-              </div>
+            <div id='message'>
+              <script id="message-template" type="text/x-handlebars-template">
+                {{#each messages}}
+
+                <table style="width: 100%">
+                  <tbody>
+                  <tr>
+                    <td><strong>SENT TO</strong></td>
+                    <td><strong>MESSAGE</strong></td>
+                    <td><strong>DATE SENT</strong></td>
+                    <td><strong>DELETE</strong></td>
+                  </tr>
+                  <div class="row">
+                    <td>{{recipients.0.name}}</td>
+                    <td>{{bodyText}}</td>
+                    <td>June, 29, 1841<td>
+                    <td>
+                    <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button></td>
+                  </div>
+                </tbody>
+                </table>
+                {{/each}}
+              </script>
+            </div>
           </form>
-          <div class="row">
-            <div class="information col-md-6">
-              <p>Qui id quod purto nonumy, in vim enim laudem luptatum, at mel regione oblique vituperata. Qui suscipit sadipscing ad. An novum aliquip consectetuer per, nonumy impetus admodum in qui, alia stet ad has. Cu decore malorum sea, natum ignota eam eu, cu eam porro inermis. Nibh dicam cetero mea ut. Pri ea oratio deserunt, sed ea option omnesque adipiscing, singulis delicata facilisis in ius. Falli cetero cu pro, ne soleat eleifend has, in eum lorem nonumy.
-              </p>
-            </div>
-            <div class="information col-md-6">
-              <p>Vix id dicat audire periculis, te eos dolorem facilisis. Ea sea tale tation, putent essent splendide te nec. Summo debitis ex vix, no vocibus platonem efficiantur nam, quot nobis electram at duo. Quot commodo his te. Usu habeo numquam interpretaris ei, an denique gloriatur per.
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="information col-md-6">
-              <p>Qui id quod purto nonumy, in vim enim laudem luptatum, at mel regione oblique vituperata. Qui suscipit sadipscing ad. An novum aliquip consectetuer per, nonumy impetus admodum in qui, alia stet ad has. Cu decore malorum sea, natum ignota eam eu, cu eam porro inermis. Nibh dicam cetero mea ut. Pri ea oratio deserunt, sed ea option omnesque adipiscing, singulis delicata facilisis in ius. Falli cetero cu pro, ne soleat eleifend has, in eum lorem nonumy.
-              </p>
-            </div>
-            <div class="information col-md-6">
-              <p>Vix id dicat audire periculis, te eos dolorem facilisis. Ea sea tale tation, putent essent splendide te nec. Summo debitis ex vix, no vocibus platonem efficiantur nam, quot nobis electram at duo. Quot commodo his te. Usu habeo numquam interpretaris ei, an denique gloriatur per.
-              </p>
-            </div>
-          </div>
       </div>
     </section>
   </body>
