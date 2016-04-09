@@ -49,6 +49,11 @@ function show(req, res) {
 
 function destroy(req, res) {
   // FILL ME IN !
+  console.log('destroy button clicked');
+  db.Message.findByIdAndRemove({ _id: req.params.messageId }, function(err, foundMessage){
+    console.log('hi', req.params.messageId);
+    res.json(foundMessage);
+  });
 }
 
 function update(req, res) {
