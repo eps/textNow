@@ -40,6 +40,11 @@ function create(req, res) {
 
 function show(req, res) {
   // FILL ME IN !
+  db.Message.findById(req.params.messageId, function(err, foundMessage) {
+      if(err) { console.log('messageController.show error', err); }
+      console.log('messageController.show responding with', foundMessage);
+      res.json(foundMessage);
+    });
 }
 
 function destroy(req, res) {
