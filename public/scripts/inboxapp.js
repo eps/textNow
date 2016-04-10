@@ -5,6 +5,7 @@ var allMessages = [];
 
 $(document).ready(function() {
 
+
   $messageList = $('#message');
 
   var source = $('#message-template').html();
@@ -17,33 +18,19 @@ $(document).ready(function() {
     error: errorSuccess,
   });
 
-  $('#inbox-form').on('submit', function(e) {
-    e.preventDefault();
-    var newData = $(this).serializeArray();
-    console.log('button worked', newData);
-      $.ajax({
-        method: 'POST',
-        url: '/api/messages',
-        data: newData,
-        success: postSuccess,
-        error: postError,
-      });
+  $.ajax({
+    method: 'GET',
+    url: '/api/messages/:id',
+    success: messageIdSuccess,
+    error: messageIdError
   });
-
-
-  // $.ajax({
-  //   method: 'GET',
-  //   url: '/api/messages/:id',
-  //   success: messageIdSuccess,
-  //   error: messageIdError
-  // });
 
 
   $('#message-form').on('click', '.deleteBtn', function deleteMessage (message) {
     $.ajax({
     method: 'DELETE',
     url: '/api/messages/' + $(this).attr('data-id'),
-    success: handleDeleteMessage,
+    success: handleDeleteSuccess,
     error: handleDeleteError,
     });
   });
@@ -55,6 +42,7 @@ function render () {
   $messageList.append(html);
 }
 
+// list all the messages
 function messageSuccess(json) {
     allMessages = json;
     console.log('message success', json);
@@ -66,24 +54,20 @@ function errorSuccess(err) {
   console.log('Message Error: ', err);
 }
 
-// created a new message
-function postSuccess(json) {
-  allMessages.push(json);
-  render();
-  console.log('post messages success', json);
-}
-
-function postError(err) {
-  console.log('POST Error: ', err);
-}
-
 // delete a saved message
-function handleDeleteMessage(event) {
-  console.log('button clicked');
+function handleDeleteSuccess(json) {
+  console.log('');
+  for(var i = 0; i < allMessages.length; i++) {
+    if(allMessages[i]._id === messageId) {
+      allMessages.splice(i, 1);
+      break;
+    }
+  } render();
+  console.log('got messages ', json);
 }
 
 function handleDeleteError(err) {
-  console.log('button clicked to delete message ERROR ', err);
+    console.log('button clicked to delete message ERROR ', err);
 }
 
 function messageIdSuccess(event) {
