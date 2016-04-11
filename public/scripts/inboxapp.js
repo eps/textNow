@@ -5,7 +5,6 @@ var allMessages = [];
 
 $(document).ready(function() {
 
-
   $messageList = $('#message');
 
   var source = $('#message-template').html();
@@ -29,30 +28,20 @@ $(document).ready(function() {
 
   $('#message-form').on('click', '.edit-messages', function handleSaveChangesClick (e) {
     e.preventDefault();
-    console.log('edit button clicked');
     $.ajax({
       method: 'GET',
       url: '/api/messages/' + $(this).attr('data-id'),
-      success: function(data) {
-        // what to do with data
-        console.log(data);
-        $('#fromInput').val(data.user);
-        $('#recipientInput').val(data.recipients[0].number);
-        $('#messageInput').val(data.bodyText);
-      },
-      error: function(err) {
-        console.log(err);
-      }
+      success: editButtonSuccess,
+      error: editButtonError
     });
   });
 
   $('#buttonSaved').on('click', function handleButtonSave(e){
     console.log('clicked saved button');
-    var messageId = $(this).attr('message-id');
-    console.log(messageId);
+    console.log($(this).attr('data-id'));
     $.ajax({
       method: 'PUT',
-      url: '/api/messages/',
+      url: '/api/messages/' + $(this).attr('data-id'),
       success: handleSaveSuccess,
       error: handleSaveError
     });
@@ -93,12 +82,17 @@ function handleDeleteError(err) {
   console.log('button clicked to delete message ERROR ', err);
 }
 
-function messageIdSuccess(event) {
-
+// show values in edit modal"
+function editButtonSuccess(data) {
+  console.log(data);
+    $('#fromInput').val(data.user);
+    $('#recipientInput').val(data.recipients[0].number);
+    $('#messageInput').val(data.bodyText);
+    $('#buttonSaved').attr('data-id',data._id);
 }
 
-function messageIdError(err) {
-  console.log('ID ERROR: ', err);
+function editButtonError(err) {
+  console.log('Edit button error: ', err);
 }
 
 function handleSaveSuccess (json) {
