@@ -36,7 +36,6 @@ function show(req, res) {
   // FILL ME IN !
   db.Message.findById(req.params.messageId, function(err, foundMessage) {
       if(err) { console.log('messageController.show error', err); }
-      console.log('messageController.show responding with', foundMessage);
       res.json(foundMessage);
     });
 }
@@ -51,19 +50,20 @@ function destroy(req, res) {
 
 function update(req, res) {
   // FILL ME IN !
-  db.Message.findById(req.params.messageId, function(err, foundMessage) {
+  db.Message.findById({ _id: req.params.messageId}, function(err, foundMessage) {
     if(err) {
       console.log('messageController.update error', err);
     }
-    foundMessage.from = req.body.from;
-    foundMessage.bodyText = req.body.bodyText;
-    foundMessage.save(function(err, savedMessages) {
-      if(err) { console.log('saving new message failed'); }
-      res.json(savedMessages);
-    });
+    console.log(foundMessage.user);
+    foundMessage.user = req.body.user;
+    foundMessage.bodyText = req.body.body_text;
+      foundMessage.save(function(err, savedUpdate) {
+        if (err) {
+          console.log('Saved Update Error: ', err);
+        } res.json(savedUpdate);
+      });
   });
 }
-
 
 // export public methods here
 module.exports = {
