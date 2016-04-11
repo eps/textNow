@@ -39,9 +39,15 @@ $(document).ready(function() {
   $('#buttonSaved').on('click', function handleButtonSave(e){
     console.log('clicked saved button');
     console.log($(this).attr('data-id'));
+
+    var fromInput = $('#fromInput').val();
+    var recipientInput = $('#recipientInput').val();
+    var messageInput = $('#messageInput').val();
+
     $.ajax({
       method: 'PUT',
       url: '/api/messages/' + $(this).attr('data-id'),
+      data: { user: fromInput},
       success: handleSaveSuccess,
       error: handleSaveError
     });
@@ -84,7 +90,7 @@ function handleDeleteError(err) {
 
 // show values in edit modal"
 function editButtonSuccess(data) {
-  console.log(data);
+  console.log('edited button success', data);
     $('#fromInput').val(data.user);
     $('#recipientInput').val(data.recipients[0].number);
     $('#messageInput').val(data.bodyText);
@@ -95,8 +101,17 @@ function editButtonError(err) {
   console.log('Edit button error: ', err);
 }
 
-function handleSaveSuccess (json) {
-  console.log('Saved new inbox ', json);
+function handleSaveSuccess (data) {
+  var fromInput = $('#fromInput').val();
+  var recipientInput = $('#recipientInput').val();
+  var messageInput = $('#messageInput').val();
+
+  console.log(fromInput,recipientInput, messageInput);
+  data.user = fromInput;
+  data.recipients[0].number = recipientInput;
+  data.bodyText = messageInput;
+  console.log('Saved new inbox ', data);
+
 }
 
 function handleSaveError (err) {
