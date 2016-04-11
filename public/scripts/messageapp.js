@@ -31,6 +31,8 @@ function render () {
 
 // create a new message
 function postSuccess(json) {
+  $('#inbox-form input').val(" ");
+  $('#message').val(" ");
   allMessages.push(json);
   render();
 
