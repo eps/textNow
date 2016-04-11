@@ -17,14 +17,6 @@ $(document).ready(function() {
     success: messageSuccess,
     error: errorSuccess,
   });
-  //
-  // $.ajax({
-  //   method: 'GET',
-  //   url: '/api/messages/:messageId',
-  //   success: messageIdSuccess,
-  //   error: messageIdError
-  // });
-
 
   $('#message-form').on('click', '.deleteBtn', function deleteMessage (message) {
     $.ajax({
@@ -38,10 +30,26 @@ $(document).ready(function() {
   $('#message-form').on('click', '.edit-messages', function handleSaveChangesClick (e) {
     e.preventDefault();
     console.log('edit button clicked');
+    $.ajax({
+      method: 'GET',
+      url: '/api/messages/' + $(this).attr('data-id'),
+      success: function(data) {
+        // what to do with data
+        console.log(data);
+        $('#fromInput').val(data.user);
+        $('#recipientInput').val(data.recipients[0].number);
+        $('#messageInput').val(data.bodyText);
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
   });
 
   $('#buttonSaved').on('click', function handleButtonSave(e){
     console.log('clicked saved button');
+    var messageId = $(this).attr('message-id');
+    console.log(messageId);
     $.ajax({
       method: 'PUT',
       url: '/api/messages/',
@@ -85,13 +93,13 @@ function handleDeleteError(err) {
   console.log('button clicked to delete message ERROR ', err);
 }
 
-// function messageIdSuccess(event) {
-//   console.log('ID SUCCESSFUL', event);
-// }
-//
-// function messageIdError(err) {
-//   console.log('ID ERROR: ', err);
-// }
+function messageIdSuccess(event) {
+
+}
+
+function messageIdError(err) {
+  console.log('ID ERROR: ', err);
+}
 
 function handleSaveSuccess (json) {
   console.log('Saved new inbox ', json);
