@@ -29,6 +29,7 @@ function render () {
   $messageList.append(html);
 }
 
+// create a new message
 function postSuccess(json) {
   allMessages.push(json);
   render();

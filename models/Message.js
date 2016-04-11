@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var Recipient = require('./recipient');
 
 var MessageSchema = new Schema ({
+  user: String,
   dateSent: String,
   bodyText: String,
   from: String,
