@@ -18,18 +18,12 @@ function create(req, res) {
   // FILL ME IN !
  // REAL DATA
   var newMessage = new db.Message ({
+    user: req.body.user,
     dateSent: '132323232',
     bodyText: req.body.body_text,
     from: req.body.from,
-    recipients: [{ name: req.body.to, number: '23423423',}]
+    recipients: [{ name: "Kyle", number: req.body.to,}]
   });
-
-  // {
-  //    dateSent: 'July 22, 2016',
-  //    bodyText: 'Where are you?',
-  //    from: '+14153049149',
-  //    recipients: [{ name: 'Steve', number: '+14158501895'}]
-  // }
 
   newMessage.save(function(err, message){
     if (err) {
@@ -48,16 +42,26 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
-  // FILL ME IN !
-  console.log('destroy button clicked');
+  // FILL ME IN
   db.Message.findByIdAndRemove({ _id: req.params.messageId }, function(err, foundMessage){
-    console.log('hi', req.params.messageId);
+    console.log('successfully removed', req.params.messageId);
     res.json(foundMessage);
   });
 }
 
 function update(req, res) {
   // FILL ME IN !
+  db.Message.findById(req.params.messageId, function(err, foundMessage) {
+    if(err) {
+      console.log('messageController.update error', err);
+    }
+    foundMessage.from = req.body.from;
+    foundMessage.bodyText = req.body.bodyText;
+    foundMessage.save(function(err, savedMessages) {
+      if(err) { console.log('saving new message failed'); }
+      res.json(savedMessages);
+    });
+  });
 }
 
 
