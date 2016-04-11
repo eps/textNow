@@ -22,11 +22,12 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-// REQUEST TO SECOND PAGE /MESSAGE
+// REQUEST TO SECOND PAGE '/MESSAGE'
 app.get('/messages', function inbox (req, res) {
   res.sendFile(__dirname + '/views/messages.html');
 });
 
+// '/INBOX PAGE'
 app.get('/inbox', function inbox (req, res) {
   res.sendFile(__dirname + '/views/inbox.html');
 });
