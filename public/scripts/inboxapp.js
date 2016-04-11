@@ -17,13 +17,13 @@ $(document).ready(function() {
     success: messageSuccess,
     error: errorSuccess,
   });
-
-  $.ajax({
-    method: 'GET',
-    url: '/api/messages/:id',
-    success: messageIdSuccess,
-    error: messageIdError
-  });
+  //
+  // $.ajax({
+  //   method: 'GET',
+  //   url: '/api/messages/:messageId',
+  //   success: messageIdSuccess,
+  //   error: messageIdError
+  // });
 
 
   $('#message-form').on('click', '.deleteBtn', function deleteMessage (message) {
@@ -31,7 +31,22 @@ $(document).ready(function() {
     method: 'DELETE',
     url: '/api/messages/' + $(this).attr('data-id'),
     success: handleDeleteSuccess,
-    error: handleDeleteError,
+    error: handleDeleteError
+    });
+  });
+
+  $('#message-form').on('click', '.edit-messages', function handleSaveChangesClick (e) {
+    e.preventDefault();
+    console.log('edit button clicked');
+  });
+
+  $('#buttonSaved').on('click', function handleButtonSave(e){
+    console.log('clicked saved button');
+    $.ajax({
+      method: 'PUT',
+      url: '/api/messages/',
+      success: handleSaveSuccess,
+      error: handleSaveError
     });
   });
 });
@@ -56,7 +71,7 @@ function errorSuccess(err) {
 
 // delete a saved message
 function handleDeleteSuccess(json) {
-  console.log('');
+  messageId = message._id;
   for(var i = 0; i < allMessages.length; i++) {
     if(allMessages[i]._id === messageId) {
       allMessages.splice(i, 1);
@@ -67,13 +82,21 @@ function handleDeleteSuccess(json) {
 }
 
 function handleDeleteError(err) {
-    console.log('button clicked to delete message ERROR ', err);
+  console.log('button clicked to delete message ERROR ', err);
 }
 
-function messageIdSuccess(event) {
-  console.log('ID SUCCESSFUL', event);
+// function messageIdSuccess(event) {
+//   console.log('ID SUCCESSFUL', event);
+// }
+//
+// function messageIdError(err) {
+//   console.log('ID ERROR: ', err);
+// }
+
+function handleSaveSuccess (json) {
+  console.log('Saved new inbox ', json);
 }
 
-function messageIdError(err) {
-  console.log('ID ERROR: ', err);
+function handleSaveError (err) {
+  console.log('Save Error: ', err);
 }
