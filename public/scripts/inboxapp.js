@@ -41,13 +41,13 @@ $(document).ready(function() {
     console.log($(this).attr('data-id'));
 
     var fromInput = $('#fromInput').val();
-    var recipientInput = $('#recipientInput').val();
+    var recipientInput = [{number: $('#recipientInput').val()}];
     var messageInput = $('#messageInput').val();
 
     $.ajax({
       method: 'PUT',
       url: '/api/messages/' + $(this).attr('data-id'),
-      data: { user: fromInput},
+      data: { user: fromInput, bodyText: messageInput, recipients: recipientInput},
       success: handleSaveSuccess,
       error: handleSaveError
     });
@@ -102,14 +102,14 @@ function editButtonError(err) {
 }
 
 function handleSaveSuccess (data) {
-  var fromInput = $('#fromInput').val();
-  var recipientInput = $('#recipientInput').val();
-  var messageInput = $('#messageInput').val();
-
-  console.log(fromInput,recipientInput, messageInput);
-  data.user = fromInput;
-  data.recipients[0].number = recipientInput;
-  data.bodyText = messageInput;
+  // var fromInput = $('#fromInput').val();
+  // var recipientInput = $('#recipientInput').val();
+  // var messageInput = $('#messageInput').val();
+  //
+  // console.log(fromInput,recipientInput, messageInput);
+  // data.user = fromInput;
+  // data.recipients.number = recipientInput;
+  // data.bodyText = messageInput;
   console.log('Saved new inbox ', data);
 
 }
