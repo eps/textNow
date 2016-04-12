@@ -2,7 +2,7 @@ function index(req, res) {
   res.json({
     message: "Welcome to textNow!",
     documentation_url: "https://github.com/hermchan/textNow",
-    base_url: "http://strawberry-cupcake-16867.herokuapp.com",
+    base_url: "https://damp-harbor-89981.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes available endpoints"},
       {method: "GET", path: "/api/messages", description: "List all data under message model"},
