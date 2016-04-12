@@ -4,6 +4,8 @@
 
 /* hard-coded data */
 var db = require('../models');
+var dt = new Date();
+var setDate = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
 
 // GET /api/messages, get all messages
 function index(req, res) {
@@ -19,7 +21,7 @@ function create(req, res) {
  // REAL DATA
   var newMessage = new db.Message ({
     user: req.body.user,
-    dateSent: '132323232',
+    dateSent: setDate,
     bodyText: req.body.bodyText,
     from: req.body.from,
     recipients: [{ name: req.body.to, number: req.body.number,}]

@@ -41,7 +41,7 @@ $(document).ready(function() {
     console.log($(this).attr('data-id'));
 
     var fromInput = $('#fromInput').val();
-    var recipientInput = [{number: $('#recipientInput').val()}];
+    var recipientInput = [{number:  $('#recipientInput').val()}];
     var messageInput = $('#messageInput').val();
 
     $.ajax({
@@ -64,8 +64,7 @@ function render () {
 function messageSuccess(json) {
     allMessages = json;
     console.log('message success', json);
-    $messageList.append(json);
-  render();
+    render();
 }
 
 function errorSuccess(err) {
@@ -80,8 +79,9 @@ function handleDeleteSuccess(json) {
       allMessages.splice(i, 1);
       break;
     }
-  } render();
-  console.log('got messages ', json);
+    render();
+    console.log('got messages ', json);
+  }
 }
 
 function handleDeleteError(err) {
@@ -102,16 +102,8 @@ function editButtonError(err) {
 }
 
 function handleSaveSuccess (data) {
-  // var fromInput = $('#fromInput').val();
-  // var recipientInput = $('#recipientInput').val();
-  // var messageInput = $('#messageInput').val();
-  //
-  // console.log(fromInput,recipientInput, messageInput);
-  // data.user = fromInput;
-  // data.recipients.number = recipientInput;
-  // data.bodyText = messageInput;
   console.log('Saved new inbox ', data);
-
+  $('#myModal').modal('hide');
 }
 
 function handleSaveError (err) {
