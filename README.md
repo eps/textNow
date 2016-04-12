@@ -1,4 +1,4 @@
-# ${1:textNow}
+#textNow#
 
 A website that allows users to send "sample" text messages and save them into the database for future references.
 

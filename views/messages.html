@@ -34,7 +34,7 @@
 
     </script>
 
-    <title>textEm</title>
+    <title>textNow</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -56,32 +56,31 @@
       <li role="presentation"><a href="http://localhost:3000/messages">Create a New Message</a></li>
     </ul>
     <div class="jumbotron">
-      <div class="container">
-        <h1>Send a message</h1>
-        <p>Hello!</p>
+      <div class="container" id="send_message">
       </div>
     </div>
     <!-- BEGIN FORM SAMPLE -->
 
     <section class="container">
+      <h1>Send a message</h1>
       <form id='inbox-form' class="form-horizontal">
 
         <div class="col-md-6 col-md-offset-3">
           <div class="form-group">
             <label for="user">Name:</label>
-            <input type="text" name="user" placeholder="Enter your name" id="nameInput">
+            <input type="text" name="user" class="input-md" placeholder="Enter your name" id="nameInput">
           </div>
           <div class="form-group">
             <label for="from">From:</label>
-            <input type="text" name="from" placeholder="Enter your number" id="numberInput">
+            <input type="text" name="from" class="input-md" placeholder="Enter your number" id="numberInput">
           </div>
           <div class="form-group">
             <label for="to">To:</label>
-            <input type="text" name="to" placeholder="Enter in recipient's name" id="recipientNameInput">
+            <input type="text" name="to" class="input-md" placeholder="Enter in recipient's name" id="recipientNameInput">
           </div>
           <div class="form-group">
             <label for="to">Number:</label>
-            <input type="text" name="number" placeholder="Enter in recipient's number" id="recipientInput">
+            <input type="text" name="number" class="input-md" placeholder="Enter in recipient's number" id="recipientInput">
           </div>
       <!-- <div class="row"> -->
             <!-- </div> -->
@@ -89,6 +88,8 @@
             <label for="message">Message:</label>
             <textarea class="form-control" name="bodyText" rows="5" id="message"></textarea>
           </div>
+
+      <!-- MONTH, DAY, YEAR DROPDOWN OPTION -->
           <div class="col-md-offset-3 col-md-6">
             <form action="" name="someform">
               <select id="daydropdown">
@@ -103,12 +104,12 @@
 
             //populatedropdown(id_of_day_select, id_of_month_select, id_of_year_select)
             window.onload=function(){
-            populatedropdown("daydropdown", "monthdropdown", "yeardropdown")
+              populatedropdown("monthdropdown", "daydropdown", "yeardropdown")
             }
           </script>
           <div class="form-group">
-            <div class="col-md-6 col-md-offset-3">
-              <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-danger">Send Message</button>
+            <div class="text-center">
+              <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-success">Send Message</button>
             </div>
           </div>
         </div>

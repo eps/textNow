@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>textEm</title>
+    <title>textNow</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -32,26 +32,31 @@
           <!-- Form Name -->
       <legend>Welcome!</legend>
         <!-- Textarea -->
+        <table style="width: 100%">
+          <tr bgcolor="#dddddd" class="row">
+            <td><strong>FROM</strong></td>
+            <td><strong>SENT TO</strong></td>
+            <td><strong>MESSAGE</strong></td>
+            <td><strong>DATE SENT</strong></td>
+            <td><strong>DELETE</strong></td>
+            <td><strong>EDIT</strong></td>
+          </tr>
+        </table>
         <div id='message'>
           <script id="message-template" type="text/x-handlebars-template">
             {{#each messages}}
 
             <table style="width: 100%">
               <tbody>
-              <tr>
-                <td><strong>FROM</strong></td>
-                <td><strong>SENT TO</strong></td>
-                <td><strong>MESSAGE</strong></td>
-                <td><strong>DATE SENT</strong></td>
-                <td><strong>DELETE</strong></td>
-                <td><strong>EDIT</strong></td>
               </tr>
+              <tr class="row">
                 <td>{{user}}</td>
                 <td>{{recipients.0.number}}</td>
                 <td>{{bodyText}}</td>
                 <td>{{dateSent}}</td>
-                <td><button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button></td>
-                <td><button type-"button" class="btn btn-info edit-messages pull-right" data-toggle="modal" data-target="#myModal" data-id={{_id}}>Edit Messages</button></td>
+                <td><button type="button" name="button" class="deleteBtn btn btn-danger center" data-id={{_id}}>Delete</button></td>
+                <td><button type="button" class="btn btn-info edit-messages pull-right" data-toggle="modal" data-target="#myModal" data-id={{_id}}><span class="glyphicon glyphicon-edit"></span>Edit Messages</button></td>
+              </tr>
               </tbody>
             </table>
             {{/each}}

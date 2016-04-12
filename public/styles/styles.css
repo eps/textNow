@@ -1,11 +1,19 @@
 .jumbotron {
-  background-image: url(/images/background1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  color: #EEE;
+  /*opacity: .7;*/
+  background-image: url(/images/background1.jpg);
+  background-position: 50% 50%;
 }
+
+
 .jumbotron .container {
-  height: 350px;
+  height: 450px;
+}
+
+h1 {
+  color: #337494 !IMPORTANT;
+  text-align: center;
 }
 
 .inline-header {
@@ -16,4 +24,67 @@
 
 .row dropdown {
   align-items: center;
+}
+
+legend {
+  padding: 20px;
+}
+input {
+  width: 100%;
+  padding: 5px;
+}
+
+.glyphicon {
+  margin-right: 10px;
+}
+
+.tr {
+ background-color: : #dddddd;
+  table-layout: fixed;
+}
+table, th, td {
+  text-align: center;
+  padding: 8px;
+  border-top-color: #dddddd;
+  border-top-style: solid;
+  border-top-width: 1px;
+  table-layout: fixed;
+  width: 175px;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+}
+
+label {
+  font-size: 18px;
+}
+
+.ghost-button {
+  display: inline-block;
+  width: 200px;
+  padding: 8px;
+  margin-top: 11%;
+  margin-left: 40%;
+  color: #fff;
+  border: 2px solid #fff;
+  font-size: 20px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  transition: background-color 0.2s ease-out,
+              border-color 0.2s ease-out;
+}
+.ghost-button:hover, .ghost-button:active {
+  background-color: #fff; /* fallback */
+  background-color: rgba(255, 255, 255);
+  border-color: #fff; /* fallback */
+  border-color: rgba(255, 255, 255, 0.4);
+  transition: background-color 0.3s ease-in,
+              border-color 0.3s ease-in;
+}
+
+.container #send_message {
+  color: black;
 }
