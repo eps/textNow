@@ -21,14 +21,20 @@
 
   <body>
     <ul class="nav nav-tabs">
-      <li role="presentation"><a href="http://localhost:3000">Home</a></li>
-      <li role="presentation"><a href="http://localhost:3000/inbox">Inbox</a></li>
-      <li role="presentation"><a href="http://localhost:3000/messages">Create a New Message</a></li>
-    </ul>
+      <li role="presentation"><a href="/">Home</a></li>
+      <li role="presentation"><a href="/inbox">Inbox</a></li>
+      <li role="presentation"><a href="/messages">Create a New Message</a></li>
 
-      <div class="jumbotron">
-        <div class="container">
-          <a class="ghost-button" href="http://localhost:3000/messages/">GET STARTED</a>
+      <div class="loginNav pull-right">
+        <ul class="nav nav-tabs">
+          <li role="presentation"><a href="/login">Login</a></li>
+          <li role="presentation"><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </ul>
+    <div class="jumbotron">
+      <div class="container">
+        <a class="ghost-button" href="/messages">GET STARTED</a>
       </div>
     </div>
     <!-- BEGIN FORM SAMPLE -->
@@ -46,7 +52,7 @@
               <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select
               <span class="caret"></span></button>
               <ul class="dropdown-menu">
-                <li><a href="http://localhost:3000/messages/">Text Message (SMS)</a></li>
+                <li><a href="/messages">Text Message (SMS)</a></li>
                 <li><a href="#">Voice Call</a></li>
               </ul>
             </div>

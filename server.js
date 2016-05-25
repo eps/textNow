@@ -5,6 +5,7 @@ var express = require('express');
 // generate a new express app and call it 'app'
 var app = express();
 var bodyParser = require('body-parser');
+
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,6 +19,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /*
 * HTML ENDPOINTS
 */
+app.get('/testtwilio', function (req, res){
+  client.sendMessage({
+    to: '+14159945772',
+    from: '+16504498443',
+    body: 'Hello Wesley from twilio, heheheh'
+  }, function (err, data){
+    if (err)
+      console.log('twilio test failed', err);
+    else
+      console.log('twilio success', data);
+    });
+});
+
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
