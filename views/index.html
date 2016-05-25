@@ -20,18 +20,26 @@
   </head>
 
   <body>
-    <ul class="nav nav-tabs navbar-collapse collapse">
-      <li role="presentation"><a href="/">Home</a></li>
-      <li role="presentation"><a href="/inbox">Inbox</a></li>
-      <li role="presentation"><a href="/messages">Create a New Message</a></li>
+    <nav class="navbar navbar-default">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <ul class="nav nav-tabs">
+        <li role="presentation"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/inbox">Inbox</a></li>
+        <li role="presentation"><a href="/messages">Create a New Message</a></li>
 
-      <div class="loginNav pull-right">
-        <ul class="nav nav-tabs">
-          <li role="presentation"><a href="/login">Login</a></li>
-          <li role="presentation"><a href="/logout">Logout</a></li>
-        </ul>
-      </div>
-    </ul>
+        <div class="loginNav pull-right navbar-collapse collapse">
+          <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/login">Login</a></li>
+            <li role="presentation"><a href="/logout">Logout</a></li>
+          </ul>
+        </div>
+      </ul>
+    </nav>
     <div class="jumbotron">
       <div class="container">
         <a class="ghost-button" href="/messages">GET STARTED</a>
